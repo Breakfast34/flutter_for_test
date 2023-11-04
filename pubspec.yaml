@@ -24,10 +24,10 @@ dev_dependencies:
   flutter_lints: ^2.0.0
 
   data_flutter_for_test:
-    path: ../data-flutter-for-test/data_flutter_for_test
-    # git:
-    #   url: https://github.com/Breakfast34/data-flutter-for-test.git
-    #   ref: main
+    # path: ../data-flutter-for-test/data_flutter_for_test
+    git:
+      url: "https://github.com/Breakfast34/data-flutter-for-test.git"
+      ref: main
 dependency_overrides:
 
 flutter:
