@@ -1,8 +1,9 @@
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:bloc/bloc.dart';
-import 'package:data_flutter_for_test/data_flutter_for_test.dart';
+
 import 'package:equatable/equatable.dart';
+import 'package:flutter_package_2/data_flutter_for_test.dart';
 import 'package:meta/meta.dart';
 
 part 'data_user_bloc_event.dart';
