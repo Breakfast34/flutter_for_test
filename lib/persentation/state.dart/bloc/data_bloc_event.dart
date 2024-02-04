@@ -1,25 +1,22 @@
 part of 'data_bloc_bloc.dart';
 
 @immutable
-abstract class DataUserBlocEvent extends Equatable {
-  const DataUserBlocEvent();
+abstract class DataBlocEvent extends Equatable {
+  const DataBlocEvent();
   @override
   List<Object> get props => [];
 }
 
-final class FetchDataUserEvent extends DataUserBlocEvent {
-  final String? click;
-  const FetchDataUserEvent({
-    this.click,
-  });
+final class DepartmentEvent extends DataBlocEvent {
+  const DepartmentEvent();
   @override
   List<Object> get props => [];
 }
 
-final class DataUserEvent extends DataUserBlocEvent {
+final class ProductEvent extends DataBlocEvent {
   final String click;
 
-  const DataUserEvent({
+  const ProductEvent({
     required this.click,
   });
   @override

@@ -22,11 +22,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final DataUserBloc _dataUserBlocBloc = DataUserBloc();
+  final DataBloc _dataUserBlocBloc = DataBloc();
   @override
   void initState() {
     super.initState();
-    _dataUserBlocBloc.add(const FetchDataUserEvent());
+    _dataUserBlocBloc.add(const DepartmentEvent());
   }
 
   List<Department> department = [];
@@ -60,7 +60,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          BlocListener<DataUserBloc, DataUserBlocState>(
+          BlocListener<DataBloc, DataBlocState>(
             bloc: _dataUserBlocBloc,
             listener: (context, state) {
               if (state is ProductBlocError) {
@@ -68,7 +68,7 @@ class _HomePageState extends State<HomePage> {
               } else if (state is DepartmentBlocLoaded) {
                 department = state.response!.departments;
                 // departmentName = state.department!;
-              } else if (state is DataUserBlocLoading) {
+              } else if (state is DataBlocLoading) {
                 dev.log('DataUserBlocLoading 1');
               } else if (state is ProductBlocLoaded) {
                 listProducts = state.response!.products;
@@ -78,7 +78,7 @@ class _HomePageState extends State<HomePage> {
               future: Future.delayed(
                 const Duration(seconds: 2),
                 () {
-                  _dataUserBlocBloc.add(const FetchDataUserEvent());
+                  _dataUserBlocBloc.add(const DepartmentEvent());
                 },
               ),
               builder: (context, snapshot) {
@@ -108,10 +108,10 @@ class _HomePageState extends State<HomePage> {
                       if (index == 0) {
                         i = 0;
                         _dataUserBlocBloc
-                            .add(DataUserEvent(click: department[i!].id));
+                            .add(ProductEvent(click: department[i!].id));
                       } else {
                         _dataUserBlocBloc
-                            .add(DataUserEvent(click: department[i!].id));
+                            .add(ProductEvent(click: department[i!].id));
                       }
                       Padding(
                         padding: const EdgeInsets.only(right: 15, top: 15),
@@ -164,7 +164,7 @@ class _HomePageState extends State<HomePage> {
           ),
           Padding(
             padding: const EdgeInsets.only(left: 10),
-            child: BlocBuilder<DataUserBloc, DataUserBlocState>(
+            child: BlocBuilder<DataBloc, DataBlocState>(
               bloc: _dataUserBlocBloc,
               builder: (context, state) {
                 if (state is ProductBlocLoaded) {
@@ -188,14 +188,14 @@ class _HomePageState extends State<HomePage> {
               },
             ),
           ),
-          BlocConsumer<DataUserBloc, DataUserBlocState>(
+          BlocConsumer<DataBloc, DataBlocState>(
             bloc: _dataUserBlocBloc,
             listener: (context, state) {
               if (state is ProductBlocError) {
                 dev.log('Error: ${state.message}');
               } else if (state is ProductBlocLoaded) {
                 listProducts = state.response!.products;
-              } else if (state is DataUserBlocLoading) {
+              } else if (state is DataBlocLoading) {
                 dev.log('DataUserBlocLoading 2');
               }
             },
@@ -225,7 +225,7 @@ class _HomePageState extends State<HomePage> {
                     },
                   ),
                 );
-              } else if (state is DataUserBlocLoading) {
+              } else if (state is DataBlocLoading) {
                 dev.log('DataUserBlocLoading');
                 return Expanded(
                   child: GridviewLoading(

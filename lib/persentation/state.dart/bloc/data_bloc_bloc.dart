@@ -10,18 +10,18 @@ import 'package:meta/meta.dart';
 part 'data_bloc_event.dart';
 part 'data_bloc_state.dart';
 
-class DataUserBloc extends Bloc<DataUserBlocEvent, DataUserBlocState> {
+class DataBloc extends Bloc<DataBlocEvent, DataBlocState> {
   late ProductListingResponse response1;
   late ProductListingResponse response2;
   late String cilck;
-  DataUserBloc() : super(DataUserBlocInitial()) {
-    on<DataUserBlocEvent>((event, emit) async {
+  DataBloc() : super(DataBlocInitial()) {
+    on<DataBlocEvent>((event, emit) async {
       switch (event.runtimeType) {
-        case FetchDataUserEvent:
-          await _handleDataUserEvent(event as FetchDataUserEvent, emit);
+        case DepartmentEvent:
+          await _handleDataUserEvent(event as DepartmentEvent, emit);
           break;
-        case DataUserEvent:
-          await _hendleProduct(event as DataUserEvent, emit);
+        case ProductEvent:
+          await _hendleProduct(event as ProductEvent, emit);
           break;
         default:
       }
@@ -29,10 +29,10 @@ class DataUserBloc extends Bloc<DataUserBlocEvent, DataUserBlocState> {
   }
 
   Future<void> _handleDataUserEvent(
-    FetchDataUserEvent event,
-    Emitter<DataUserBlocState> emit,
+    DepartmentEvent event,
+    Emitter<DataBlocState> emit,
   ) async {
-    emit(DataUserBlocLoading());
+    emit(DataBlocLoading());
 
     try {
       final departmentResult = await getIt<DepartmentUsecase>().execute();
@@ -53,10 +53,10 @@ class DataUserBloc extends Bloc<DataUserBlocEvent, DataUserBlocState> {
   }
 
   Future<void> _hendleProduct(
-    DataUserEvent event,
-    Emitter<DataUserBlocState> emit,
+    ProductEvent event,
+    Emitter<DataBlocState> emit,
   ) async {
-    emit(DataUserBlocLoading());
+    emit(DataBlocLoading());
     try {
       cilck = event.click;
       if (cilck != '') {

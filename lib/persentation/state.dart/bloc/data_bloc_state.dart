@@ -1,17 +1,17 @@
 part of 'data_bloc_bloc.dart';
 
 @immutable
-abstract class DataUserBlocState extends Equatable {
-  const DataUserBlocState();
+abstract class DataBlocState extends Equatable {
+  const DataBlocState();
   @override
   List<Object> get props => [];
 }
 
-final class DataUserBlocInitial extends DataUserBlocState {}
+final class DataBlocInitial extends DataBlocState {}
 
-final class DataUserBlocLoading extends DataUserBlocState {}
+final class DataBlocLoading extends DataBlocState {}
 
-final class DepartmentBlocLoaded extends DataUserBlocState {
+final class DepartmentBlocLoaded extends DataBlocState {
   final ProductListingResponse? response;
 
   const DepartmentBlocLoaded({
@@ -22,7 +22,7 @@ final class DepartmentBlocLoaded extends DataUserBlocState {
   List<Object> get props => [];
 }
 
-final class ProductBlocLoaded extends DataUserBlocState {
+final class ProductBlocLoaded extends DataBlocState {
   final ProductListingResponse? response;
 
   const ProductBlocLoaded({
@@ -33,7 +33,7 @@ final class ProductBlocLoaded extends DataUserBlocState {
   List<Object> get props => [];
 }
 
-final class ProductBlocError extends DataUserBlocState {
+final class ProductBlocError extends DataBlocState {
   final bool? message;
 
   const ProductBlocError({this.message});
