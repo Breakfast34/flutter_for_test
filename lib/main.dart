@@ -1,10 +1,10 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_package_2/data_flutter_for_test.dart';
 
-import 'persentation/bloc/data_user_bloc_bloc.dart';
-import 'persentation/ui/home_page.dart';
+
+import 'persentation/state.dart/bloc/data_bloc_bloc.dart';
+import 'persentation/page/home_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,11 +28,12 @@ class _MyAppState extends State<MyApp> {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
+        
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const HomePage(title: 'PROFILE' ),
+        home: const HomePage(title: 'PROFILE'),
       ),
     );
   }
